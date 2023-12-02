@@ -1,4 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
+import { bagActions } from "../routes/bagSlice";
+
 const HomePage = ({ item }) => {
+  const dispatch = useDispatch();
+  const bagItems = useSelector((store) => store.bag);
+  const elementFound = bagItems.indexOf(item.id) >= 0;
+
+  const addtobag = () => {
+    dispatch(bagActions.addToBag(item.id));
+  };
+  const removefrombag = () => {
+    dispatch(bagActions.removeFromBag(item.id));
+  };
+
   return (
     <>
       <div className="item-container">
@@ -13,9 +27,23 @@ const HomePage = ({ item }) => {
           <span className="original-price">Rs {item.original_price}</span>
           <span className="discount">({item.discount_percentage}% OFF)</span>
         </div>
-        <button className="btn-add-bag" onClick={() => alert("added to bag")}>
-          Add to Bag
-        </button>
+        {!elementFound ? (
+          <button
+            type="button"
+            className="btn btn-add-bag btn-success"
+            onClick={addtobag}
+          >
+            Add to Cart
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="btn btn-add-bag btn-danger"
+            onClick={removefrombag}
+          >
+            Remove
+          </button>
+        )}
       </div>
     </>
   );

@@ -5,17 +5,16 @@ const fetchItemsSlice = createSlice({
   initialState: {
     fetchedDone: false,
     fetchingStart: false,
-    // fetchingEnd: true,
   },
   reducers: {
     setFetchDone: (state) => {
-      return (state.fetchedDone = true);
+      state.fetchedDone = true;
     },
     setFetchStart: (state) => {
-      return (state.fetchingStart = true);
+      state.fetchingStart = true;
     },
-    setFetchend: (state) => {
-      return (state.fetchingStart = false);
+    setFetchEnd: (state) => {
+      state.fetchingStart = false;
     },
   },
 });
