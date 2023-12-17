@@ -378,3 +378,10 @@ a.action_container:link {
   height: 14px;
   cursor: pointer;
 }
+
+.buttonsadd {
+  height: 30px;
+  width: 30px;
+  border-radius: 3px;
+  /* padding: 2px 2px; */
+}

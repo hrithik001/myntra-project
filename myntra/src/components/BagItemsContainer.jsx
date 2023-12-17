@@ -16,7 +16,6 @@ const BagItemsContainer = ({ item }) => {
       <div className="item-right-part">
         <div className="company">{item.company}</div>
         <div className="item-name">{item.item_name}</div>
-
         <div className="price-container">
           <span className="current-price">Rs {item.current_price}</span>
           <span className="original-price">Rs {item.original_price}</span>
@@ -32,6 +31,8 @@ const BagItemsContainer = ({ item }) => {
           Delivery by
           <span className="delivery-details-days">{item.delivery_date}</span>
         </div>
+        {/* <button className="buttonsadd">-1</button> 0
+        <button className="buttonsadd">+1</button> */}
       </div>
 
       <div className="remove-from-cart" onClick={removefrombag}>

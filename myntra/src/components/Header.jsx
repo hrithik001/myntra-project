@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const items = useSelector((state) => state.bag);
+  const wishlist = useSelector((state) => state.wishlist);
   // console.log(items);
   return (
     <>
@@ -36,15 +37,16 @@ const Header = () => {
           />
         </div>
         <div className="action_bar">
-          <div className="action_container">
+          <Link className="action_container" to="profile">
             <FaCircleUser />
             <span className="action_name">Profile</span>
-          </div>
+          </Link>
 
-          <div className="action_container">
+          <Link className="action_container" to="/wishlist">
             <FaGrinHearts />
             <span className="action_name">Wishlist</span>
-          </div>
+            <span className="bag-item-count">{wishlist.length}</span>
+          </Link>
 
           <Link className="action_container" to="/bag">
             <FaBagShopping />

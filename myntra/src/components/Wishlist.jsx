@@ -1,19 +1,23 @@
 import { useDispatch, useSelector } from "react-redux";
-
-import { wishListActions } from "../routes/wishlistSlice";
+import { bagActions } from "../routes/bagSlice";
 import React from "react";
 import { Link } from "react-router-dom";
+import { wishListActions } from "../routes/wishlistSlice";
 
-const HomePage = ({ item }) => {
+const Wishlist = ({ item }) => {
   const dispatch = useDispatch();
-  const wishlistItems = useSelector((store) => store.wishlist);
-  const elementFound = wishlistItems.indexOf(item.id) >= 0;
+  const bagItems = useSelector((store) => store.bag);
 
-  const addtowishlist = () => {
-    dispatch(wishListActions.addToWishlist(item.id));
+  const elementFound = bagItems.indexOf(item.id) >= 0;
+
+  const addtobag = () => {
+    dispatch(bagActions.addToBag(item.id));
   };
   const removefromwishlist = () => {
     dispatch(wishListActions.removeFromWishlist(item.id));
+  };
+  const removefrombag = () => {
+    dispatch(bagActions.removeFromBag(item.id));
   };
 
   return (
@@ -23,10 +27,10 @@ const HomePage = ({ item }) => {
           <img className="item-image" src={item.image} alt="item image" />
         </Link>
 
-        <div className="rating">
+        {/* <div className="rating">
           {item.rating.stars} ⭐ | {item.rating.count}
-        </div>
-        <div className="company-name">{item.company}</div>
+        </div> */}
+        {/* <div className="company-name">{item.company}</div> */}
         <div className="item-name">{item.item_name}</div>
         <div className="price">
           <span className="current-price">Rs {item.current_price}</span>
@@ -37,21 +41,29 @@ const HomePage = ({ item }) => {
           <button
             type="button"
             className="btn btn-add-bag btn-success"
-            onClick={addtowishlist}
+            onClick={addtobag}
           >
-            Wishlist
+            Add to Bag
           </button>
         ) : (
           <button
             type="button"
             className="btn btn-add-bag btn-danger"
-            onClick={removefromwishlist}
+            onClick={removefrombag}
           >
-            Remove
+            Added
           </button>
         )}
+
+        <button
+          type="button"
+          className="btn btn-add-bag btn-danger"
+          onClick={removefromwishlist}
+        >
+          Remove from Wishlist
+        </button>
       </div>
     </>
   );
 };
-export default HomePage;
+export default Wishlist;
