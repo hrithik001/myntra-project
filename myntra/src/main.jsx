@@ -7,6 +7,7 @@ import Bag from "./routes/Bag.jsx";
 import Home from "./routes/Home.jsx";
 import WishList from "./routes/WishList.jsx";
 import Profile from "./routes/Profile.jsx";
+import NothingPage from "./routes/NothingPage.jsx";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import store from "./routes/index.js";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/singlePage/:productId",
         element: <SingleProductPage />,
+      },
+      {
+        path: "/nothing",
+        element: <NothingPage />,
       },
     ],
   },
