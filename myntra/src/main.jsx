@@ -6,13 +6,15 @@ import "./index.css";
 import Bag from "./routes/Bag.jsx";
 import Home from "./routes/Home.jsx";
 import WishList from "./routes/WishList.jsx";
-import Profile from "./routes/Profile.jsx";
+
 import NothingPage from "./routes/NothingPage.jsx";
 import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import store from "./routes/index.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SingleProductPage from "./routes/SingleProduct.jsx";
+import { Auth0Provider } from "@auth0/auth0-react";
+import ProfilePage from "./routes/ProfilePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +34,8 @@ const router = createBrowserRouter([
         element: <WishList />,
       },
       {
-        path: "/profile",
-        element: <Profile />,
+        path: "/profilepage",
+        element: <ProfilePage />,
       },
       {
         path: "/singlePage/:productId",
@@ -47,9 +49,15 @@ const router = createBrowserRouter([
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <Auth0Provider
+    domain="dev-7o0htit0gbimvw7t.us.auth0.com"
+    clientId="fvP9ZXjJFGamvWXf5MGjkIGGxz7H5nFT"
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+    }}
+  >
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>
+  </Auth0Provider>
 );

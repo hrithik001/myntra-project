@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const NothingPage = ({ contextText, referHere }) => {
   return (
     <>
-      <div class="px-4 py-5 my-5 text-center">
+      <div class="px-4 py-5 my-5 text-center ">
         <img
           class="d-block mx-auto mb-4"
           src="/images/failedcase.webp"

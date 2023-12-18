@@ -2,7 +2,7 @@ import { FaCircleUser, FaBagShopping } from "react-icons/fa6";
 import { FaGrinHearts } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import ProfileSection from "./ProfileSection";
 const Header = () => {
   const items = useSelector((state) => state.bag);
   const wishlist = useSelector((state) => state.wishlist);
@@ -37,9 +37,8 @@ const Header = () => {
           />
         </div>
         <div className="action_bar">
-          <Link className="action_container" to="profile">
-            <FaCircleUser />
-            <span className="action_name">Profile</span>
+          <Link className="action_container" to="/profilepage">
+            <ProfileSection />
           </Link>
 
           <Link className="action_container" to="/wishlist">
